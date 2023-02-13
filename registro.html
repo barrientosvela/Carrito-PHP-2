@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<header>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de libros</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</header>
+
+<body>
+  <div class="container py-3 border-bottom">
+    <h1>Tienda de libros</h1>
+  </div>
+  <form method="$_REQUEST" action="validaUser.php" class="container">
+    <div class="py-3">
+      <label for="exampleFormControlInput1" class="form-label">Usuario o correo electronico</label>
+      <input name="user" class="form-control" placeholder="name@example.com">
+    </div>
+    <div class="mb-5">
+      <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+      <input name="pass" type="password" class="form-control"></input>
+    </div>
+    <div class="container d-flex justify-content-end">
+      <button name="login" class="btn btn-success p-2">Acceso</button>
+      <a href="registro.html" class="p-2"><button class="btn btn-primary">Registro</button></a>
+    </div>
+  </form>
+
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
