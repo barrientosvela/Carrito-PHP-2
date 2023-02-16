@@ -3,11 +3,48 @@
     src: url('../fonts/Callista\ Italic.ttf') format('truetype');
 }
 
-h1{
+#logo {
     font-family: 'callista';
     font-size: 45px;
 }
-li a img{
+
+h2 {
+    font-family: 'callista';
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 10px;
+}
+
+li a img {
     height: 30px;
     width: 30px;
+}
+
+/* login */
+.bordert {
+    border-top: 1px solid #aaa;
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 5px;
+}
+
+.bordert:after {
+    content: "or connect with";
+    position: absolute;
+    top: -13px;
+    left: 33%;
+    background-color: #fff;
+    padding: 0px 8px;
+}
+
+.bordert img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative
+}
+
+.bordert a {
+    text-decoration: none;
 }
