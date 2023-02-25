@@ -48,7 +48,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form method="$_REQUEST" action="validaUser.php">
+            <form method="$_REQUEST" action="logica/validaUser.php">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Usuario / Email:</label>
                 <input type="text" class="form-control" id="recipient-name" name="user">
