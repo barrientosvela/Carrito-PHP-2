@@ -1,20 +1,51 @@
-<!DOCTYPE html>
-<html lang="e">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda</title>
-</head>
-<body>
-    <h1 class="p-5 text-center">Usuario correcto<?php
-    session_start();
-    $rAdmin = $_SESSION['administrador'];
-    if ($rAdmin == "si"){
-        echo "Eres administrador";
-    } else {
-        echo "No eres administrador";
-    }
-    ?></h1>
-</body>
-</html>
+<?php require('includes/templates/header.php');
+
+require('includes/utiles.php');
+
+$termino = limpiar($_REQUEST['buscar']);
+
+$url = 'https://www.textos.info/busqueda.atom&query=' . $termino; // URL del archivo XML
+$xml = simplexml_load_file($url); // Carga el archivo XML
+
+?>
+<div class="container">
+    <!-- Será el listado de libros -->
+    <div class="container">
+        <h1 class="m-3 p-3 text-center">Todos los libros</h1>
+        <h5 class="pb-5 text-center">Si eres un amante de la lectura y necesitas encontrar un libro por su título, ¡estás en el lugar correcto!</h5>
+        <hr>
+        <br class="p-3">
+        <h3 class="text-center">El resultado de la busqueda: <?php echo $xml->subtitle ?></h3>
+        <div class="row">
+            <!-- Recorre todas las entradas y muestra los datos -->
+            <?php foreach ($xml->entry as $entry) { ?>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="<?php echo $entry->link[4]['href'] ?>" class="card-img img-fluid rounded-start" alt="portada">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <!-- <a href="libros/<%= //libro.id %>"><img id="img-editar" src="../images/editar.png" alt="editar"></a> -->
+                                    <h5 class="card-title">
+                                        <?php echo $entry->title ?>
+                                    </h5>
+                                    <p class="card-text">
+                                        <?php echo $entry->author->name ?>
+                                    </p>
+                                    <p class="card-text"><small class="text-muted">Tiene: <?php echo $entry->children('dcterms', true)->extent ?></small>
+                                    </p>
+                                    <p class="card-text"><small class="text-muted"><?php echo "Idioma: " . $entry->children('dcterms', true)->language ?></small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+</div>
+<?php require('includes/templates/footer.php') ?>

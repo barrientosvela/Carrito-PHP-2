@@ -1,6 +1,6 @@
 <?php
 $host = "localhost"; // Cambiar si tu base de datos se encuentra en otro servidor
-$dbname = "libros_bd";
+$dbname = "libros_db";
 $username = "root";
 $password = "";
 
