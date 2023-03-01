@@ -1,4 +1,5 @@
 <?php
+require('includes/login-registro.php');
 if (isset($_SESSION['autenticado'])) {
   $autenticado = $_SESSION['autenticado'];
   $userError = $_SESSION['userError'];
@@ -43,7 +44,9 @@ if (isset($_SESSION['autenticado'])) {
               <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle ms-2">
             </a>
             <ul class="dropdown-menu text-small">
-              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <?php if ($_SESSION['administrador'] == "si") {
+                echo "<li><a class='dropdown-item' href='user.php'>Ver usuarios</a></li>";
+              } ?>
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li><a class="dropdown-item" href="#">Profile</a></li>
               <li>
@@ -71,7 +74,7 @@ if (isset($_SESSION['autenticado'])) {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="REQUEST" action="includes/login-registro.php">
+          <form method="#" action="#">
             <input type="hidden" name="origen" value="login">
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Usuario / Email:</label>

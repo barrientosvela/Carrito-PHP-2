@@ -1,8 +1,5 @@
 <?php
-session_start();
 require('includes/templates/header.php');
-
-require('includes/utiles.php');
 
 $termino = limpiar($_REQUEST['buscar']);
 

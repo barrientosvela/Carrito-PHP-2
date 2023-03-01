@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2023 a las 10:26:29
+-- Tiempo de generación: 01-03-2023 a las 14:21:13
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -74,7 +74,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nombre`, `correo`, `contrasenia`, `fechaReg`, `direccion`, `administrador`) VALUES
-(25, 'asdf', 'asdf', '912ec803b2ce49e4a541068d495ab570', '2023-03-01', '', 'si');
+(25, 'asdf', 'asdf', '912ec803b2ce49e4a541068d495ab570', '2023-03-01', '', 'si'),
+(27, 'jose', 'jose', '662eaa47199461d01a623884080934ab', '2023-03-01', '', 'no');
 
 --
 -- Índices para tablas volcadas
@@ -120,7 +121,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Restricciones para tablas volcadas

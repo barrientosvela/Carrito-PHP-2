@@ -1,40 +1,45 @@
 <?php
-session_start();
-require('../includes/conexion.php');
-require('../includes/utiles.php');
+if (session_status() != PHP_SESSION_ACTIVE) {
+    session_start();
+}
+require('includes/conexion.php');
+require('includes/utiles.php');
 $userError = "";
-$origen = limpiar($_REQUEST["origen"]);
 $_SESSION['autenticado'] = "no";
+if (isset($_REQUEST["origen"])) {
+    $origen = limpiar($_REQUEST["origen"]);
+    if ($origen == "login") {
+        // busca datos del login en la db y los comprueba
+        $user = limpiar($_REQUEST['user']);
+        $pass = limpiar($_REQUEST['pass']);
+        // Consulta SQL preparada
+        $sqlTotal = "SELECT * FROM user WHERE correo = '$user'";
+        $resTotal = $conect->query($sqlTotal);
 
-if ($origen == "login") {
+        if (mysqli_num_rows($resTotal) > 0) {
+            $row = mysqli_fetch_array($resTotal);
+            $rNombre = $row[1];
+            $rUser = $row[2];
+            $rPass = $row[3];
+            $rAdmin = $row[6];
 
-    $user = limpiar($_REQUEST['user']);
-    $pass = limpiar($_REQUEST['pass']);
-    $result = mysqli_query($conect, "SELECT * FROM user WHERE correo = '$user'");
-
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_array($result);
-        $rNombre = $row[1];
-        $rUser = $row[2];
-        $rPass = $row[3];
-        $rAdmin = $row[6];
-
-        $_SESSION['nombre'] = $rNombre;
-        $_SESSION['administrador'] = $rAdmin;
-        $pass = md5($pass);
-        if ($user != $rUser || $pass != $rPass) {
-            $userError = "Usuario o contraseña incorrecta--".$rPass;
+            $_SESSION['nombre'] = $rNombre;
+            $_SESSION['administrador'] = $rAdmin;
+            $pass = md5($pass);
+            if ($user != $rUser || $pass != $rPass) {
+                $userError = "Usuario o contraseña incorrecta";
+            } else {
+                $_SESSION['autenticado'] = "si";
+            }
         } else {
-            $_SESSION['autenticado'] = "si";
+            $userError = "Usuario no registrado";
         }
     } else {
-        $userError = "Usuario no registrado";
-    }
-} else {
-    if ($origen == "registro") {
+        // inserta datos de registro de usuario
         $name = limpiar($_REQUEST['nombre']);
         $email = limpiar($_REQUEST['email']);
         $pass = limpiar($_REQUEST['pass']);
+        $direccion = limpiar($_REQUEST['direccion']);
         $fecha = date('Y-m-d');
 
         $_SESSION['nombre'] = $name;
@@ -46,16 +51,16 @@ if ($origen == "login") {
             $admin = $_SESSION['administrador'] = "no";
         }
         try {
-            mysqli_query($conect, "INSERT INTO user (id, nombre, correo, contrasenia, fechaReg, direccion, administrador) 
-                VALUES ('','$name', '$email', '$pass', '$fecha','','$admin')");
+            // Consulta SQL preparada
+            $isertUser = "INSERT INTO user (nombre, correo, contrasenia, fechaReg, direccion, administrador) 
+      VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $conect->prepare($isertUser);
+            $stmt->bind_param("ssssss", $name, $email, $pass, $fecha, $direccion, $admin);
+            $stmt->execute();
             $_SESSION['autenticado'] = "si";
         } catch (Exception $e) {
             $userError = "Error: " . $e;
         }
-    } else {
-        echo "<h3>No puede acceder a esta ruta</h3>";
     }
 }
 $_SESSION['userError'] = $userError;
-header('Location: ../index.php');
-?>

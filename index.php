@@ -1,10 +1,8 @@
 <?php
-session_start();
 require('includes/templates/header.php');
 ?>
 <!-- contenido -->
 <!-- Carruesel ===========================-->
-<?php print_r($_SESSION); ?>
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button id="btn-carrusel" type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

@@ -1,31 +1,27 @@
 <?php
-session_start();
-require('includes/templates/header.php') ?>
-<!-- inserta usuario en la base de datos-->
-<?php
+require('includes/templates/header.php');
 require('includes/conexion.php');
-
 ?>
 <!-- formulario de registro -->
 <div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
     <h1>Nuevo Usuario</h1>
-    <form action="includes/login-registro.php" class="my-2" method="REQUEST">
+    <form action="#" class="my-2" method="#">
         <input type="hidden" name="origen" value="registro">
         <div class="form-group">
             <label for="username">Nombre:</label>
             <input id="nombre" type="text" class="form-control" name="nombre">
         </div>
         <div class="form-group">
-            <label for="username">Nick:</label>
-            <input type="text" class="form-control" name="nick">
+            <label for="username">Usuario (correo electronico):</label>
+            <input type="text" class="form-control" name="email">
         </div>
         <div class="form-group">
             <label for="username">Contraseña:</label>
             <input type="password" class="form-control" name="pass">
         </div>
         <div class="form-group">
-            <label for="username">Email:</label>
-            <input type="text" class="form-control" name="email">
+            <label for="username">Dirección:</label>
+            <input type="text" class="form-control" name="direccion">
         </div>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="si" name="admin">
