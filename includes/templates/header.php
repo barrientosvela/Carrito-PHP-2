@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (isset($_SESSION['autenticado'])) {
   $autenticado = $_SESSION['autenticado'];
   $userError = $_SESSION['userError'];
@@ -98,10 +97,9 @@ if (isset($_SESSION['autenticado'])) {
       </div>
     </div>
   </div>
-  <?php if (isset($userError)) {
-    if ($userError != "") { ?>
-      <div class="alert alert-warning fade show m-0" role="alert">
-        <strong class="mx-1">Advertencia!</strong> <?php echo $userError ?>
-      </div>
-  <?php }
-  } ?>
+  <?php
+  if (isset($userError) && $userError != "") { ?>
+    <div class="alert alert-warning fade show m-0" role="alert">
+      <strong class="mx-1">Advertencia!</strong> <?php echo $userError ?>
+    </div>
+  <?php } ?>

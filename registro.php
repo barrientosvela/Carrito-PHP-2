@@ -1,4 +1,5 @@
-<?php include('sesion.php');
+<?php
+session_start();
 require('includes/templates/header.php') ?>
 <!-- inserta usuario en la base de datos-->
 <?php
@@ -32,7 +33,7 @@ require('includes/conexion.php');
                 Administrador
             </label>
         </div>
-        <button type="submit" class="btn btn-success mt-4" >Registrar</button>
+        <button type="submit" class="btn btn-success mt-4">Registrar</button>
     </form>
 </div>
 <?php require('includes/templates/footer.php') ?>

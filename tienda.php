@@ -1,4 +1,6 @@
-<?php require('includes/templates/header.php');
+<?php
+session_start();
+require('includes/templates/header.php');
 
 require('includes/utiles.php');
 
@@ -38,6 +40,16 @@ $xml = simplexml_load_file($url); // Carga el archivo XML
                                     </p>
                                     <p class="card-text"><small class="text-muted"><?php echo "Idioma: " . $entry->children('dcterms', true)->language ?></small>
                                     </p>
+                                    <h3><?php $precio = rand(0, 50); echo $precio." €" ?></h3>
+                                    <form method="REQUEST" action="carrito.php">
+                                        <input type="hidden" name="id" value="<?php echo $entry->id ?>">
+                                        <input type="hidden" name="titulo" value="<?php echo $entry->title ?>">
+                                        <input type="hidden" name="autor" value="<?php echo $entry->author->name ?>">
+                                        <input type="hidden" name="precio" value="<?php echo $precio ?>">
+                                        <input type="hidden" name="portada" value="<?php echo $entry->link[4]['href'] ?>">
+                                        <input type="hidden" name="cantidad" value="1">
+                                        <input type="submit" class="btn btn-primary" value="Agregar al carrito">
+                                    </form>
                                 </div>
                             </div>
                         </div>
