@@ -15,6 +15,7 @@ if (isset($_SESSION['autenticado'])) {
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/basic.css">
   <link rel="stylesheet" href="css/carousel.css">
+  <link rel="stylesheet" href="css/perfil.css">
 </header>
 
 <body>
@@ -27,17 +28,24 @@ if (isset($_SESSION['autenticado'])) {
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="index.php" class="nav-link px-3 text-white">Inicio</a></li>
-          <li><a href="#" class="nav-link px-3 text-white">Novedades</a></li>
-          <li><a href="#" class="nav-link px-3 text-white">Recomendados</a></li>
-          <li><a href="#" class="nav-link px-3 text-white">Más leidos</a></li>
-          <li><a href="#" class="nav-link px-3 text-white">Sobre nosotros</a></li>
+          <li><a href="<?php echo file_exists('novedades.php') ? 'novedades.php' : '../novedades.php'; ?>" class="nav-link px-3 text-white">Novedades</a></li>
+          <li><a href="<?php echo file_exists('populares.php') ? 'populares.php' : '../populares.php'; ?>" class="nav-link px-3 text-white">Más leidos</a></li>
+          <li><a href="<?php echo file_exists('titulos.php') ? 'titulos.php' : '../titulos.php'; ?>" class="nav-link px-3 text-white">Títulos</a></li>
+          <li><a href="<?php echo file_exists('autores.php') ? 'autores.php' : '../autores.php'; ?>" class="nav-link px-3 text-white">Autores</a></li>
+          <li><a href="<?php echo file_exists('etiquetas.php') ? 'etiquetas.php' : '../etiquetas.php'; ?>" class="nav-link px-3 text-white">Etiquetas</a></li>
         </ul>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="<?php echo file_exists('tienda.php') ? 'tienda.php' : '../tienda.php'; ?>" method="REQUEST">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="<?php echo file_exists('busqueda.php') ? 'busqueda.php' : '../busqueda.php'; ?>" method="REQUEST">
           <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" name="buscar">
         </form>
         <?php
-        if (isset($autenticado) && $autenticado == "si") { ?>
+        if (isset($autenticado) && $autenticado == "si") {
+          $sql = "SELECT * FROM carrito WHERE user_correo = ?";
+          $stmt = $conect->prepare($sql);
+          $stmt->bind_param("s", $_SESSION['user']);
+          $stmt->execute();
+          $carrito = $stmt->fetch();
+        ?>
           <div class="dropdown text-end">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <p class="m-0"><?php echo $_SESSION['nombre'] ?></p>
@@ -45,10 +53,10 @@ if (isset($_SESSION['autenticado'])) {
             </a>
             <ul class="dropdown-menu text-small">
               <?php if ($_SESSION['administrador'] == "si") {
-                echo "<li><a class='dropdown-item' href='user.php'>Ver usuarios</a></li>";
+                echo "<li><a class='dropdown-item' href='user.php'>Getión usuarios</a></li>";
               } ?>
               <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="perfil.php?user=$user">Profile</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -62,6 +70,11 @@ if (isset($_SESSION['autenticado'])) {
           </div>
         <?php }
         ?>
+        <?php if (isset($carrito)) { ?>
+          <div>
+            <a href="carrito.php"><img src="images/carrito.png" alt="carrito de compras" height="50px" style="padding-left: 150px;"></a>
+          </div>
+        <?php } ?>
       </div>
     </div>
   </header>

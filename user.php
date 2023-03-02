@@ -7,7 +7,7 @@ $resTotal = $conect->query($sqlTotal);
 
 ?>
 
-<h4 class="text-center p-5">Cantidad de usuarios: <?= mysqli_num_rows($resTotal) ?></h4>
+<h4 class="text-center p-5">Cantidad de usuarios: <?php mysqli_num_rows($resTotal) ?></h4>
 <!-- Muestra tabla con resultados -->
 <div class="container">
     <table class="table table-hover">

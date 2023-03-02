@@ -23,6 +23,7 @@ if (isset($_REQUEST["origen"])) {
             $rPass = $row[3];
             $rAdmin = $row[6];
 
+            $_SESSION['user'] = $rUser;
             $_SESSION['nombre'] = $rNombre;
             $_SESSION['administrador'] = $rAdmin;
             $pass = md5($pass);
@@ -52,9 +53,9 @@ if (isset($_REQUEST["origen"])) {
         }
         try {
             // Consulta SQL preparada
-            $isertUser = "INSERT INTO user (nombre, correo, contrasenia, fechaReg, direccion, administrador) 
+            $insertUser = "INSERT INTO user (nombre, correo, contrasenia, fechaReg, direccion, administrador) 
       VALUES (?, ?, ?, ?, ?, ?)";
-            $stmt = $conect->prepare($isertUser);
+            $stmt = $conect->prepare($insertUser);
             $stmt->bind_param("ssssss", $name, $email, $pass, $fecha, $direccion, $admin);
             $stmt->execute();
             $_SESSION['autenticado'] = "si";

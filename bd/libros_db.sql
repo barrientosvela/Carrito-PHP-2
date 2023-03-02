@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2023 a las 14:21:13
+-- Tiempo de generación: 02-03-2023 a las 15:14:10
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -29,10 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `carrito` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_correo` varchar(255) NOT NULL,
   `libros` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`libros`)),
-  `total` decimal(10,2) NOT NULL,
-  `fecha_creacion` date NOT NULL
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -85,8 +84,7 @@ INSERT INTO `user` (`id`, `nombre`, `correo`, `contrasenia`, `fechaReg`, `direcc
 -- Indices de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `libros`
@@ -121,17 +119,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `carrito`
---
-ALTER TABLE `carrito`
-  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

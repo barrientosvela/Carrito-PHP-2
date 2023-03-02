@@ -16,7 +16,6 @@ require('includes/templates/header.php');
         <div class="carousel-caption text-start">
           <h1>Aventuras entre las páginas.</h1>
           <p>Descubre un mundo de aventuras entre las páginas de nuestros libros.</p>
-          <p><a class="btn btn-lg btn-primary" href="#">Genero Aventuras</a></p>
         </div>
       </div>
     </div>
@@ -26,7 +25,6 @@ require('includes/templates/header.php');
         <div class="carousel-caption">
           <h1 class="">Historias para todos los gustos.</h1>
           <p>En nuestra librería encontrarás historias para todas las edades y gustos.</p>
-          <p><a class="btn btn-lg btn-primary" href="#">Genero Historias</a></p>
         </div>
       </div>
     </div>
@@ -36,7 +34,6 @@ require('includes/templates/header.php');
         <div class="carousel-caption text-end">
           <h1>Sumérgete en la magia de la literatura.</h1>
           <p>Sumérgete en la magia de la literatura con nuestra selección de libros.</p>
-          <p><a class="btn btn-lg btn-primary" href="#">Genero Fantasia</a></p>
         </div>
       </div>
     </div>
@@ -61,7 +58,6 @@ require('includes/templates/header.php');
       <p>Si eres un amante de la lectura y necesitas encontrar un libro por su título, ¡estás en el lugar
         correcto! En nuestra tienda en línea, ofrecemos una amplia selección de libros de todos los
         géneros y títulos, para que puedas encontrar fácilmente el libro que necesitas.</p>
-      <p><a class="btn btn-secondary" href="#">Leer más &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <img src="images/escritor.jpg" class="rounded-circle" width="140" height="140" alt="">
@@ -69,7 +65,6 @@ require('includes/templates/header.php');
       <p>Si estás buscando libros por autor, estás en el lugar correcto. Ofrecemos una gran variedad de
         libros de distintos géneros y autores para que puedas encontrar el libro que necesitas de manera
         sencilla y rápida.</p>
-      <p><a class="btn btn-secondary" href="#">Leer más &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <img src="images/editorial.jpg" class="rounded-circle" width="140" height="140" alt="">
@@ -77,7 +72,6 @@ require('includes/templates/header.php');
       <p>Si estás buscando libros por editorial, has llegado al lugar adecuado. En nuestra tienda en
         línea, ofrecemos una amplia selección de libros de diferentes editoriales para que puedas
         encontrar el libro que necesitas de manera sencilla y rápida.</p>
-      <p><a class="btn btn-secondary" href="#">Leer más &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
   </div><!-- /.row -->
 
@@ -88,9 +82,9 @@ require('includes/templates/header.php');
 
   <div class="row featurette">
     <div class="col-md-7">
-      <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-      <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting
-        prose here.</p>
+      <h2 class="featurette-heading fw-normal lh-1">¡Unidos por los libros! <span class="text-muted"> Tu próxima aventura te espera.</span></h2>
+      <p class="lead">En nuestra tienda de libros, te invitamos a explorar un mundo de historias emocionantes y conocimientos valiosos.
+        Con una amplia selección de géneros y títulos, estamos seguros de que encontrarás algo que te apasione y te haga disfrutar de la lectura.</p>
     </div>
     <div class="col-md-5">
       <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -104,10 +98,10 @@ require('includes/templates/header.php');
 
   <div class="row featurette">
     <div class="col-md-7 order-md-2">
-      <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-muted">See
-          for yourself.</span></h2>
-      <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of
-        how this layout would work with some actual real-world content in place.</p>
+      <h2 class="featurette-heading fw-normal lh-1">No juzgues un libro por su portada.<span class="text-muted"> Descubre su verdadera historia.</span></h2>
+      <p class="lead">A menudo, las portadas pueden ser engañosas y no reflejar realmente la calidad del contenido que hay en su interior. Por eso, en nuestra
+        tienda de libros, nos aseguramos de seleccionar cuidadosamente cada título y ofrecer solo lo mejor a nuestros clientes. ¡Ven y descubre las joyas que
+        tenemos esperándote!</p>
     </div>
     <div class="col-md-5 order-md-1">
       <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -121,10 +115,9 @@ require('includes/templates/header.php');
 
   <div class="row featurette">
     <div class="col-md-7">
-      <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-      <p class="lead">And yes, this is the last block of representative placeholder content. Again, not
-        really intended to be actually read, simply here to give you a better view of what this would
-        look like with some actual content. Your content.</p>
+      <h2 class="featurette-heading fw-normal lh-1">Un libro es un viaje que puedes llevar contigo a cualquier parte.</h2>
+      <p class="lead">Ya sea que estés buscando un escape de la rutina diaria, o quieras expandir tus horizontes y aprender algo nuevo, un buen libro es la compañía perfecta.
+        En nuestra tienda de libros, creemos en la magia de la lectura y estamos comprometidos a ayudarte a encontrar los mejores libros para satisfacer tus necesidades y gustos.</p>
     </div>
     <div class="col-md-5">
       <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
